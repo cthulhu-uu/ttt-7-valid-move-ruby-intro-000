@@ -2,8 +2,14 @@ require_relative "../lib/valid_move.rb"
 
 describe './lib/valid_move.rb' do
   it 'returns true for a valid position on an empty board' do
-    board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+    board = ["", nil, " ", " ", " ", " ", " ", " ", " "]
     index = 0
+    expect(valid_move?(board, index)).to be_truthy
+
+    index = 1
+    expect(valid_move?(board, index)).to be_truthy
+
+    index = 2
     expect(valid_move?(board, index)).to be_truthy
   end
 
@@ -26,22 +32,4 @@ describe './lib/valid_move.rb' do
 
     expect(valid_move?(board, index)).to be_falsey
   end
-
-  it 'returns false if the board has an empty string "" in the index' do
- board = ["", " ", " ", " ", " ", " ", " ", " ", " "]
- index = 0
-
- expect(valid_move?(board, index)).to be(true)
-end
-
-it 'returns false if the board has nil in the index' do
- board = [nil, " ", " ", " ", " ", " ", " ", " ", " "]
- index = 0
-
- expect(valid_move?(board, index)).to be(true)
-
- index = 1
- expect(valid_move?(board, index)).to be(true)
-end
-
 end
