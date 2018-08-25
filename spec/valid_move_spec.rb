@@ -26,4 +26,22 @@ describe './lib/valid_move.rb' do
 
     expect(valid_move?(board, index)).to be_falsey
   end
+
+  it 'returns false if the board has an empty string "" in the index' do
+ board = ["", " ", " ", " ", " ", " ", " ", " ", " "]
+ index = 0
+
+ expect(position_taken?(board, index)).to be(false)
+end
+
+it 'returns false if the board has nil in the index' do
+ board = [nil, " ", " ", " ", " ", " ", " ", " ", " "]
+ index = 0
+
+ expect(position_taken?(board, index)).to be(false)
+
+ index = 1
+ expect(position_taken?(board, index)).to be(false)
+end
+
 end
